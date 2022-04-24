@@ -9,11 +9,8 @@ function getArrayParams(arr) {
   for (let i = 0; i < arr.length; i++) {
     if (max < arr[i]) {
       max = arr[i];
-    } else {
-      if (min > arr[i]) {
-        min = arr[i];
-      }
-
+    } else if (min > arr[i]) {
+      min = arr[i];
     }
     sum += arr[i];
   }
@@ -26,6 +23,8 @@ function getArrayParams(arr) {
     avg: avg
   };
 }
+
+
 
 
 // Задание 2
@@ -46,12 +45,21 @@ function makeWork(arrOfArr, func) {
     if (sum > max) {
       max = sum;
     }
-
-    return max;
   }
+  return max;
 };
 
 // Задание 3
 function worker2(arr) {
-  return Math.abs(getArrayParams(arr).max - getArrayParams(arr).min);
-};
+  let min = Infinity;
+  let max = -Infinity
+
+  for (let i = 0; i < arr.length; i++) {
+    if (max < arr[i]) {
+      max = arr[i];
+    } else if (min > arr[i]) {
+      min = arr[i];
+    }
+  }
+  return (max - min);
+}
